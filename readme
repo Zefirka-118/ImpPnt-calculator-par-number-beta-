@@ -1,0 +1,101 @@
+"""Haremos un nuevo index donde haremos un nuevo formulario con diferente estilo, 
+color, ponerle una acción con boton para dirigir a una nueva pagina donde 
+podremos calcular si ciertos numeros son pares o no, debemos poner hyper
+enlaces segun los archivos correspondientes"""
+
+"""Tenemos de archivos .py en carpeta entidades tenemos <<number.py>>
+, en la raiz tenemos <<app.py>>"""
+
+"""De archivos index tenemos tenemos <<index.html>> y <<par.html>> en la carpeta <<templates>>"""
+
+"""Tambien estamos usando el framework <<Flask>> en una instancia <<venv>>"""
+
+'''index.html args:'''
+
+"""<!DOCTYPE html>
+<html>
+    <head>
+        <title>Milk500</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css')}}">
+    </head>
+    <body>
+        <div class="contenedor">
+            <h1>W E L C O M E 🐄🍃</h1>
+            <label>Ingrese su nombre:</label>
+            <input type="text">
+            <button class="formulary-button">Pasar al formulario 📄</button>
+            <a href="{{ url_for('calculadora') }}">Haz click aqui para saber comó</a>
+        </div>
+    </body>
+</html>"""
+
+'''Styles args:'''
+
+"""body {
+    font-family: Arial, sans-serif;
+    background-color: #6f7be6;
+}
+
+.contenedor{
+    width: 300px;
+    /* Margin es distancia de borde de fuera*/
+    /*1.-top, bottom 2- Rigth, left*/
+    margin: 50px auto;
+    /*solo es un valor, se aplica para top, bottom, left y rigth*/
+    padding: 20px;
+    background-color: cadetblue;
+    
+}
+
+h1{
+    text-align: center
+}
+
+input{
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+.formulary-button{
+    width: 100%;
+    background-color: #9355ce;
+    color: blanchedalmond;
+    padding-top: 4px;
+    margin-top: 7px;
+    border: none;
+}"""
+
+
+'''par args:'''
+
+"""<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wachador de numeros pares</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css')}}">
+    </head>
+    <body>
+        <div class="contenedor">
+        <form action="{{ url_for('realizar_operación') }}" method="POST">
+            
+            <h1>Dame a wachar tus numbers</h1>
+            <label>Ingrese un primer valor:</label>
+            <input type="number" name="value1">
+
+            <label>Ingrese un segundo valor:</label>
+            <input type="number" name="value2">
+            <button type="submit" class="formulary-button">Enviar ✅</button>
+            
+         
+        </form>
+
+        {% if resultado is not none %}
+            <p>El resultado es {{ resultado }}</p>
+        {% endif %}
+
+
+        
+    </div>
+    </body>
+</html>"""

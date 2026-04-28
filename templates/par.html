@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wachador de numeros pares</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css')}}">
+    </head>
+    <body>
+        <div class="contenedor">
+        <form action="{{ url_for('realizar_operación') }}" method="POST">
+            
+            <h1>Dame a wachar tus numbers</h1>
+            <label>Ingrese un primer valor:</label>
+            <input type="number" name="value1">
+
+            <label>Ingrese un segundo valor:</label>
+            <input type="number" name="value2">
+            <button type="submit" class="formulary-button">Enviar ✅</button>
+            
+         
+        </form>
+
+        {% if resultado is not none %}
+            <p>El resultado es {{ resultado }}</p>
+        {% endif %}
+
+
+        
+    </div>
+    </body>
+</html>
