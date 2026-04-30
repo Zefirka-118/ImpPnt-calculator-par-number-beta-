@@ -18,6 +18,10 @@ def index():
 def par():
     return render_template('par.html', resultado = None)
 
+@app.route('/azador')
+def azador():
+    return render_template('azador.html')
+
 @app.route('/definir_par', methods=['POST'])
 def realizar_operación():
     try:
@@ -27,22 +31,15 @@ def realizar_operación():
         number = Number(num1)
         resultado = number.es_par()
         
-        # Los valores ahuevo tienen que ser int para ser par
-        num1 = int(float(request.form.get('value1')))
-        num2 = int(float(request.form.get('value2')))
-
-        # wachar si cada uno es par (True) o impar (False)
-        es_par1 = (num1 % 2 == 0)
-        es_par2 = (num2 % 2 == 0)
-
-        
-        resultado = f"El {num1} es {'par' if es_par1 else 'impar'} y el {num2} es {'par' if es_par2 else 'impar'}"
-
-        return render_template('calculadora.html', resultado=resultado)
+    
+        return render_template('par.html', resultado=resultado)
     
     except (ValueError, TypeError):
         # En caso de error 
         return render_template('par.html', resultado="Error: Ingresa números válidos")
+    
+
+
     
 
     
